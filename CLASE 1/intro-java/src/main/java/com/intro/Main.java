@@ -22,5 +22,7 @@ public class Main {
 
         System.out.println(nombre+" tiene "+edad+" anios ");
         System.out.println(MessageFormat.format("{0} tiene {1} años", nombre,edad));
+
+        
     }
 }

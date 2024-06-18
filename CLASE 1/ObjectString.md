@@ -1,9 +1,19 @@
 # Crear objeto a partir de la clase String 
-+ String sano = new String(); // buscar para que sirve un objeto de tipo cadena
-
-
+```JAVA
+String sanoS = "diavlo";// It's saved in the String Pool and if there is another "diavlo" stored, it'll be not duplicated, just references the same memory slot
+String sanoF = new String();
+sano = "diavlo";//It's different because you are creating an instance of the class, so, even though the string "diavlo" is already stored in memory, it will not point at the same place but will be saved in a different place
+//Conclusion SanoF == SanoS || FALSE
+// Creating an Object for a String is not optimal and recommended.
+```
 # Metodos String
 ```JAVA
+    //equalsIgnoreCase 
+    String cadena1 = "pepe";
+    String cadena2 = "cadena";
+    if(cadena1.equalsIgnoreCase(cadena2))//evalua ignorando mayusculas
+
+
     String cadena = "abc";
     cadena.charAt(indice);
     "abc".charAt(1);
