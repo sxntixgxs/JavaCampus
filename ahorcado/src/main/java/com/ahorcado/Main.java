@@ -46,7 +46,7 @@ public class Main {
         try(Scanner sc = new Scanner(System.in)){
             int vidas=3;
             while (vidas>0) {
-                System.out.println("TIENES 3 INTENTOS");
+                System.out.println("TIENES "+vidas +" INTENTOS");
                 System.out.println("Para empezar oprime cualquier tecla");    
                 sc.nextLine();
                 System.out.println("Adivina qué palabra es");
@@ -56,48 +56,50 @@ public class Main {
                     guessingList.add("_");
                 }
                 sc.nextLine();
-                System.out.println("Ingresa la palabra");
+                System.out.println("Ingresa la palabra abajo");
                 String palabraIngresada = sc.nextLine();
 
                 if (palabraIngresada.length()>palabraLista.size()) {
-                    System.out.println("La palabra ingresada es más grande que "+palabraStart);
+                    System.out.println("La palabra ingresada es más grande");
                     System.out.println("Igual, perdiste una vida :$");
                     vidas--;
                     System.out.println("Vidas restantes: "+(vidas));
                 } else if(palabraIngresada.length()<palabraLista.size()){
-                    System.out.println("La palabra ingresada es menor que "+palabraStart);
+                    System.out.println("La palabra ingresada es menor");
                     System.out.println("Igual, perdiste una vida :$");
                     vidas--;
                     System.out.println("Vidas restantes: "+(vidas));
                 }else{
-                    String palabraTry = sc.nextLine();
-                    System.out.println("Ingresaste "+palabraTry);
+                    System.out.print("Ingresaste "+palabraIngresada+" ");
                     ArrayList<String> tryList = new ArrayList<>(); 
-                    ArrayList<String> letrasAdivinadas = new ArrayList<>();
                     int k=0;
-                    while (k<tryList.size()) {
-                        char character = palabraTry.charAt(k);
+                    while (k<palabraIngresada.length()) {
+                        char character = palabraIngresada.charAt(k);
                         tryList.add(String.valueOf(character));
                         k++;
-                    }
+                    
                     //comparar palabras
                     //lista para almacenar index
-                    ArrayList<Integer> indicesLetrasAdivinadas = new ArrayList<Integer>();
-                    for (String letraT : tryList) {
-                        for (String letraP : palabraLista) {
-                            if(letraP==letraT){
-                                letrasAdivinadas.add(letraP);
-                                indicesLetrasAdivinadas.add(letraP.indexOf(letraT));
+                        for (String letraT : tryList) {
+                            for (String letraP : palabraLista) {
+                                if(letraP==letraT){
+                                    int indice = palabraLista.indexOf(letraP);
+                                    guessingList.set(indice,letraP);
+                                }
                             }
-                        }
-                    } 
+                        } 
+
                     // for (String blanket : guessingList) {
 
                     //     guessingList.set(i, palabraTry)
                     // }
-                    
+                    if(palabraLista==palabraIngresada){
+                        System.out.println("Ganaste");
+                    }
                     vidas--;
+                    }
                 }
+
             }
 
         }
