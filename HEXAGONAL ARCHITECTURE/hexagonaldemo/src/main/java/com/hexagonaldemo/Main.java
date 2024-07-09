@@ -1,7 +1,9 @@
 package com.hexagonaldemo;
 
+import domain.service.UserService;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        UserService userService = new UserRepository();
     }
 }
